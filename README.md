@@ -1,95 +1,143 @@
-# Welcome to your Lovable project
+AI Quiz Builder 🎯
 
-## Project info
+An AI-powered quiz generation platform designed to help professors and educators quickly create customized quizzes based on topic, difficulty level, and number of questions.
+The application uses Google Gemini API to generate high-quality, context-aware questions suitable for academic use.
 
-**URL**: https://lovable.dev/projects/da72234e-a41e-48ae-9d22-6cb1171195fe
+🚀 Features
 
-## How can I edit this code?
+Generate quizzes instantly using AI
 
-There are several ways of editing your application.
+Customize:
 
-**Use Lovable**
+📘 Topic
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/da72234e-a41e-48ae-9d22-6cb1171195fe) and start prompting.
+🎚️ Difficulty level
 
-Changes made via Lovable will be committed automatically to this repo.
+🔢 Number of questions
 
-**Use your preferred IDE**
+Clean and responsive UI
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+Real-time quiz generation
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+Designed for academic and classroom use
 
-Follow these steps:
+Uses Google Gemini for accurate and structured questions
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
+🛠️ Tech Stack
+Frontend
+
+React
+
+TypeScript
+
+Vite
+
+Tailwind CSS
+
+shadcn/ui
+
+Backend
+
+Node.js
+
+Express.js
+
+Google Gemini API
+
+🧠 How It Works
+
+User enters:
+
+Quiz topic
+
+Difficulty
+
+Number of questions
+
+Frontend sends a request to the backend.
+
+Backend calls Google Gemini API with a structured prompt.
+
+Gemini generates quiz questions.
+
+The generated quiz is returned and displayed on the UI.
+
+⚙️ Project Setup (Local Development)
+Prerequisites
+
+Node.js (v18 or above recommended)
+
+npm
+
+1️⃣ Clone the Repository
 git clone <YOUR_GIT_URL>
+cd <PROJECT_FOLDER>
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## AI Quiz Generation via Gemini
-
-This project includes an Express backend to generate quizzes using Google Gemini.
-
-Setup:
-
-1. Create a `.env` file at the project root with your credentials:
-
-```
-GEMINI_API_KEY=your_api_key_here
-PORT=3001
-```
-
-2. Install deps and run both servers locally:
-
-```
+2️⃣ Install Dependencies
 npm install
+
+3️⃣ Environment Variables
+
+Create a .env file in the root directory:
+
+GEMINI_API_KEY=your_google_gemini_api_key
+PORT=3001
+
+4️⃣ Run the Project (Frontend + Backend)
 npm run dev:full
-```
 
-The frontend posts to `/generate` with `{ topic, difficulty, numQuestions }` and renders the result under the Generate page form. Vite proxies this to the Express server at port 3001 during development.
 
-## How can I deploy this project?
+Frontend runs on Vite
 
-Simply open [Lovable](https://lovable.dev/projects/da72234e-a41e-48ae-9d22-6cb1171195fe) and click on Share -> Publish.
+Backend runs on Express (port 3001)
 
-## Can I connect a custom domain to my Lovable project?
+API requests are proxied automatically during development
 
-Yes, you can!
+📡 API Endpoint
+Generate Quiz
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+POST /generate
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Request Body:
+
+{
+  "topic": "Data Structures",
+  "difficulty": "Medium",
+  "numQuestions": 10
+}
+
+
+Response:
+
+AI-generated quiz questions formatted for easy rendering
+
+🎓 Use Case
+
+Professors creating quizzes quickly
+
+Teachers preparing practice tests
+
+Students generating self-assessment questions
+
+Academic demos and AI-based education projects
+
+🌐 Deployment
+
+The project can be deployed easily using modern frontend hosting platforms.
+Once deployed, the backend handles secure quiz generation via the Gemini API.
+
+📌 Future Enhancements
+
+Export quizzes as PDF / Word
+
+MCQ + descriptive question formats
+
+Quiz timer and evaluation
+
+User authentication
+
+Question bank storage
+
+👨‍💻 Author
+
+Developed as an academic and AI-focused project to demonstrate real-world usage of Generative AI in education.
