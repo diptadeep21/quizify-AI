@@ -1,43 +1,32 @@
-// src/api.ts
+type GenerateQuizParams = {
+  topic: string;
+  difficulty: string;
+  numQuestions: number;
+};
 
-export interface GenerateQuizParams {
-    topic: string;
-    difficulty: string;
-    numQuestions: number;
+export async function generateQuiz({
+  topic,
+  difficulty,
+  numQuestions,
+}: GenerateQuizParams): Promise<string> {
+  const response = await fetch("http://localhost:5001/api/generate-quiz", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      topic,
+      difficulty,
+      numQuestions,
+    }),
+  });
+
+  if (!response.ok) {
+    const err = await response.json();
+    throw new Error(err.error || "Failed to generate quiz");
   }
-  
-  export interface GenerateQuizResponse {
-    quiz: string;
-  }
-  
-  /**
-   * Calls the backend API to generate a quiz using Google Gemini.
-   */
-  export async function generateQuiz(params: GenerateQuizParams): Promise<string | null> {
-    try {
-      // Use the Vite proxy path: "/api/generate-quiz"
-      const response = await fetch("/api/generate-quiz", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(params),
-      });
-  
-      if (!response.ok) {
-        const errorText = await response.text();
-        console.error(
-          "Failed to generate quiz. Status:",
-          response.status,
-          "Message:",
-          errorText
-        );
-        return null;
-      }
-  
-      const data: GenerateQuizResponse = await response.json();
-      return data.quiz ?? null;
-    } catch (err) {
-      console.error("Error fetching quiz:", err);
-      return null;
-    }
-  }
-  
+
+  const data = await response.json();
+
+  return data.quiz;
+}
