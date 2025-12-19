@@ -9,7 +9,7 @@ export async function generateQuiz({
   difficulty,
   numQuestions,
 }: GenerateQuizParams): Promise<string> {
-  const response = await fetch("http://localhost:5001/api/generate-quiz", {
+  const response = await fetch("https://quizify-ai-backend.onrender.com/api/generate-quiz", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
